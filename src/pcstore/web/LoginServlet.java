@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns="/")
+@WebServlet(urlPatterns="/Login")
     
 
 public class LoginServlet extends HttpServlet{
@@ -48,10 +48,9 @@ public class LoginServlet extends HttpServlet{
                 String passMd5 = myMd5.MD5Encrypt(password);  
             	int userId = login.UserLogin(username, passMd5);
             	if (userId != 0){
-            	response.sendRedirect("/PCStore/Cart"); 
+            	response.sendRedirect("/PCStore/ListItem.html"); 
             	}else
             	{
-            		out.println("<p>" + passMd5 + "</p>");
             		out.println("<p> Wrong UserName or Password.</p>");
             		out.println("<p>Enter your UserName and Password to Login:</p>");
                     out.println("<form method=\"get\">");
