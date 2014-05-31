@@ -3,7 +3,7 @@ package pcstore.ejb;
 public class Item {
 	private int Id;
 	private String Name;
-	private double Price;
+	private int Price;
 	private int Stock;
 	private String Description;
 	public int getId() {
@@ -18,10 +18,10 @@ public class Item {
 	public void setName(String name) {
 		Name = name;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return Price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		Price = price;
 	}
 	public int getStock() {
@@ -36,7 +36,7 @@ public class Item {
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public Item(int id, String name, double price, int stock, String description) {
+	public Item(int id, String name, int price, int stock, String description) {
 		super();
 		Id = id;
 		Name = name;
@@ -44,6 +44,4 @@ public class Item {
 		Stock = stock;
 		Description = description;
 	}
-	
-
 }

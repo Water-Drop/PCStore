@@ -44,10 +44,10 @@ public class LoginServlet extends HttpServlet{
             String password = request.getParameter("password");
  
             if (username != null && password != null) {
-            	myMd5 = new MD5Tool();
-                String passMd5 = myMd5.MD5Encrypt(password);  
-            	int userId = login.UserLogin(username, passMd5);
-            	if (userId != 0){
+            	//myMd5 = new MD5Tool();
+                //String passMd5 = myMd5.MD5Encrypt(password);  
+            	int userId = login.UserLogin(username, password);
+            	if (userId > 0){
             	response.sendRedirect("/PCStore/ListItem.html"); 
             	}else
             	{

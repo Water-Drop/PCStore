@@ -5,30 +5,46 @@
 <title>ListItems</title>
 </head>
 <body>
-<input type="button" value="ListItem" onclick="test()"></input>
-<span id="show_item"></span>
-<form method="get"action="Cart">
-    <p><input title="Additem:" type="text" name="additem" size="25"></p> 
-    <input type="submit" value="AddToCart">
-</form>
-<form method="post"action="MessageServlet">
-    <p><input title="Buyitem:" type="text" name="item" size="25"></p> 
-    <input type="submit" value="Buy it!">
-</form>
-<script src="js/jquery-2.1.0.js"></script>
-<script type="text/javascript">
-function test(){
-	$.get("ListItem",
-		    function(data,status){
-	            var s = "";
-		    	var tmp = JSON.parse(JSON.stringify(data));
-		    	var items = JSON.parse(JSON.stringify(tmp.Item));
-		    	for(var i = 0; i < items.length; i++){
-		    	   s = s + "<p>Name:" + items[i].Name + " Price:" + items[i].Price + " Stock:" + items[i].Stock +"</p>";
-		    	}
-		    	document.getElementById('show_item').innerHTML = s;
-		    });
-}
-</script>
+	<input type="button" value="ListItem" onclick="test()"></input>
+	<span id="show_item"></span>
+	<form method="get" action="Cart">
+		<p>
+			<input title="Additem:" type="text" name="additem" size="25">
+		</p>
+		<input type="submit" value="AddToCart">
+	</form>
+	<form method="post" action="MessageServlet">
+		<p>
+			<input title="Buyitem:" type="text" name="item" size="25">
+		</p>
+		<input type="submit" value="Buy it!">
+	</form>
+	<input type="button" value="Buy Web Service REST" onclick="webREST()"></input>
+	<script src="js/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		function test() {
+			$.get("ListItem", function(data, status) {
+				var s = "";
+				var tmp = JSON.parse(JSON.stringify(data));
+				var items = JSON.parse(JSON.stringify(tmp.Item));
+				for (var i = 0; i < items.length; i++) {
+					s = s + "<p>Name:" + items[i].Name + " Price:"
+							+ items[i].Price + " Stock:" + items[i].Stock
+							+ "</p>";
+				}
+				document.getElementById('show_item').innerHTML = s;
+			});
+		}
+		function webREST() {
+			$.post(
+					"http://localhost:8180/OrderWebServiceREST/services/orderProcess",
+					{
+						order : 1
+					},
+					function(data, status) {
+						alert(data);
+					});
+		}
+	</script>
 </body>
 </html>
