@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pcstore.ejb.ItemManage;
 import pcstore.ejb.Item;
+import defaultnamespace.*;
 
 import com.danga.MemCached.MemCachedClient;
 import com.danga.MemCached.SockIOPool;
@@ -79,7 +80,12 @@ public class ListItemServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		OrderProcessService op = new OrderProcessService();
+		OrderProcess port = op.getPort(OrderProcess.class);
+		PrintWriter out = response.getWriter();
+		String order = request.getParameter("order");
+		String rtn = port.orderProcess(order);
+		out.println(rtn);
 	}
 
 	private void getClient() {

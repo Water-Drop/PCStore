@@ -20,6 +20,7 @@
 		<input type="submit" value="Buy it!">
 	</form>
 	<input type="button" value="Buy Web Service REST" onclick="webREST()"></input>
+	<input type="button" value="Buy Web Service SOAP" onclick="webSOAP()"></input>
 	<script src="js/jquery-2.1.0.js"></script>
 	<script type="text/javascript">
 		function test() {
@@ -40,6 +41,16 @@
 					"http://localhost:8180/OrderWebServiceREST/services/orderProcess",
 					{
 						order : 1
+					},
+					function(data, status) {
+						alert(data);
+					});
+		}
+		function webSOAP() {
+			$.post(
+					"ListItem",
+					{
+						order : "order=1"
 					},
 					function(data, status) {
 						alert(data);
